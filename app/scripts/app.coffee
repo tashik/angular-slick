@@ -20,11 +20,13 @@ angular.module('slick', [])
       fade: "@"
       infinite: "@"
       lazyLoad: "@"
+      nextArrow: "@",
       onBeforeChange: "&"
       onAfterChange: "&"
       onInit: "&"
       onReInit: "&"
       pauseOnHover: "@"
+      prevArrow: "@"
       responsive: "&"
       slide: "@"
       slidesToShow: "@"
@@ -73,6 +75,8 @@ angular.module('slick', [])
             slide: scope.slide or "div"
             slidesToShow: if scope.slidesToShow? then parseInt(scope.slidesToShow, 10) else 1
             slidesToScroll: if scope.slidesToScroll? then parseInt(scope.slidesToScroll, 10) else 1
+            prevArrow: if scope.prevArrow? then scope.prevArrow else '<button type="button" class="slick-prev">Previous</button>'
+            nextArrow: if scope.nextArrow? then scope.nextArrow else '<button type="button" class="slick-next">Next</button>'
             speed: if scope.speed? then parseInt(scope.speed, 10) else 300
             swipe: scope.swipe isnt "false"
             touchMove: scope.touchMove isnt "false"
