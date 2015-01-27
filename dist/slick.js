@@ -36,7 +36,9 @@ function ($timeout) {
       swipe: '@',
       touchMove: '@',
       touchThreshold: '@',
-      vertical: '@'
+      vertical: '@',
+      asNavFor: '@',
+      focusOnSelect: '@'
     },
     link: function (scope, element, attrs) {
       var initializeSlick, isInitialized;
@@ -61,6 +63,8 @@ function ($timeout) {
             fade: scope.fade === 'true',
             infinite: scope.infinite !== 'false',
             lazyLoad: scope.lazyLoad || 'ondemand',
+            asNavFor: scope.asNavFor ? scope.asNavFor : void 0,
+            focusOnSelect: scope.focusOnSelect === 'true',
             onBeforeChange: scope.onBeforeChange || null,
             onAfterChange: function (sl, index) {
               if (scope.onAfterChange) {
