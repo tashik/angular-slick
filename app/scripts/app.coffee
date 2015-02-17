@@ -11,7 +11,7 @@ angular.module("slick", []).directive "slick", [
         accessibility: "@"
         arrows: "@"
         autoplay: "@"
-        autoplaySpeed: "@"
+        autoplaySpeed: "="
         centerMode: "@"
         centerPadding: "@"
         cssEase: "@"
