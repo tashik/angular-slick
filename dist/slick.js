@@ -44,20 +44,27 @@ angular.module('slick', []).directive('slick', [
         var initializeSlick, isInitialized;
         initializeSlick = void 0;
         isInitialized = void 0;
+        initializeSlick = void 0;
+        isInitialized = void 0;
         initializeSlick = function () {
           return $timeout(function () {
-            var currentIndex, slider;
+            var currentIndex, loader, slider;
+            currentIndex = void 0;
+            slider = void 0;
             currentIndex = void 0;
             slider = void 0;
             slider = $(element);
-            if (scope.currentIndex != null) {
+            slider.css('display', 'block');
+            loader = $('.slickloader');
+            loader.css('display', 'none');
+            if (scope.currentIndex !== null) {
               currentIndex = scope.currentIndex;
             }
             slider.slick({
               accessibility: scope.accessibility !== 'false',
               arrows: scope.arrows !== 'false',
               autoplay: scope.autoplay === 'true',
-              autoplaySpeed: scope.autoplaySpeed != null ? parseInt(scope.autoplaySpeed, 10) : 3000,
+              autoplaySpeed: scope.autoplaySpeed !== null ? parseInt(scope.autoplaySpeed, 10) : 3000,
               centerMode: scope.centerMode === 'true',
               centerPadding: scope.centerPadding || '50px',
               cssEase: scope.cssEase || 'ease',
@@ -74,7 +81,7 @@ angular.module('slick', []).directive('slick', [
                 if (scope.onAfterChange) {
                   scope.onAfterChange();
                 }
-                if (currentIndex != null) {
+                if (currentIndex !== null) {
                   return scope.$apply(function () {
                     currentIndex = index;
                     return scope.currentIndex = index;
@@ -85,7 +92,7 @@ angular.module('slick', []).directive('slick', [
                 if (scope.onInit) {
                   scope.onInit();
                 }
-                if (currentIndex != null) {
+                if (currentIndex !== null) {
                   return sl.slideHandler(currentIndex);
                 }
               },
@@ -93,18 +100,18 @@ angular.module('slick', []).directive('slick', [
               pauseOnHover: scope.pauseOnHover !== 'false',
               responsive: scope.responsive() || null,
               slide: scope.slide || 'div',
-              slidesToShow: scope.slidesToShow != null ? parseInt(scope.slidesToShow, 10) : 1,
-              slidesToScroll: scope.slidesToScroll != null ? parseInt(scope.slidesToScroll, 10) : 1,
-              prevArrow: scope.prevArrow != null ? scope.prevArrow : '<button type="button" class="slick-prev">Previous</button>',
-              nextArrow: scope.nextArrow != null ? scope.nextArrow : '<button type="button" class="slick-next">Next</button>',
-              speed: scope.speed != null ? parseInt(scope.speed, 10) : 300,
+              slidesToShow: scope.slidesToShow !== null ? parseInt(scope.slidesToShow, 10) : 1,
+              slidesToScroll: scope.slidesToScroll !== null ? parseInt(scope.slidesToScroll, 10) : 1,
+              prevArrow: scope.prevArrow !== null ? scope.prevArrow : '<button type="button" class="slick-prev">Previous</button>',
+              nextArrow: scope.nextArrow !== null ? scope.nextArrow : '<button type="button" class="slick-next">Next</button>',
+              speed: scope.speed !== null ? parseInt(scope.speed, 10) : 300,
               swipe: scope.swipe !== 'false',
               touchMove: scope.touchMove !== 'false',
               touchThreshold: scope.touchThreshold ? parseInt(scope.touchThreshold, 10) : 5,
               vertical: scope.vertical === 'true'
             });
             return scope.$watch('currentIndex', function (newVal, oldVal) {
-              if (currentIndex != null && newVal != null && newVal !== currentIndex) {
+              if (currentIndex !== null && newVal !== null && newVal !== currentIndex) {
                 return slider.slickGoTo(newVal);
               }
             });
@@ -113,7 +120,7 @@ angular.module('slick', []).directive('slick', [
         if (scope.initOnload) {
           isInitialized = false;
           return scope.$watch('data', function (newVal, oldVal) {
-            if (newVal == null) {
+            if (newVal === null) {
               return false;
             }
             if (isInitialized) {
